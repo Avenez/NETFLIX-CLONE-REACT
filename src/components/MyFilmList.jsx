@@ -14,9 +14,11 @@ class MyFilmList extends Component {
     isLoading: true,
   };
 
-  changeTitle(title) {
-    this.setState({ searchQuery: title });
-  }
+  changeTitle = async (title) => {
+    console.log(title);
+    await this.setState({ searchQuery: title });
+    await this.filmDataFetch();
+  };
 
   filmDataFetch = async () => {
     const apiKey = "cffdda84";
@@ -64,7 +66,7 @@ class MyFilmList extends Component {
           </div>
         ) : (
           <>
-            <Row className="row-cols-md-3 row-cols-xl-6 d-none d-md-flex gx-1 gy-3">
+            <Row className=" d-none d-md-flex gx-1 gy-3 ">
               {this.state.filmData.slice(0, 6).map((film, index) => (
                 <MySingleFilm key={index} imageUrl={film.Poster} />
               ))}
@@ -75,7 +77,7 @@ class MyFilmList extends Component {
                   //   <MyCarouselItem key={`car-id:${index}`} imageUrl={film.Poster} title={film.Title} year={film.Year} /> Ho provato ad aggiungere gli elementi del carosello come componente ma non sembravano funzionare. Ho inserito qui il contenuto di MyCarouselItem e funziona
 
                   <Carousel.Item>
-                    <Image src={film.Poster} className="d-block h-100 w-100" alt="film" />
+                    <Image src={film.Poster} className="d-block w-100 h-100 object-fit-cover" alt="film" />
                     <Carousel.Caption>
                       <h3>{film.Title}</h3>
                       <p>{film.Year}</p>

@@ -19,6 +19,7 @@ const MyDropDown = (props) => {
         <Dropdown.Item eventKey="lord-of-the-rings">lord-of-the-rings</Dropdown.Item>
         <Dropdown.Item eventKey="goofy">goofy</Dropdown.Item>
         <Dropdown.Item eventKey="spiderman">spiderman</Dropdown.Item>
+        <Dropdown.Item eventKey="superman">superman</Dropdown.Item>
         <Dropdown.Item eventKey="leon">leon</Dropdown.Item>
         <Dropdown.Item eventKey="hero">hero</Dropdown.Item>
         <Dropdown.Item eventKey="horror">horror</Dropdown.Item>

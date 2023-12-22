@@ -5,6 +5,7 @@ import Carousel from "react-bootstrap/Carousel";
 import MyCarouselItem from "./MyCarouselItem";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Image from "react-bootstrap/Image";
+import MyDropDown from "./MyDropDown";
 
 class MyFilmList extends Component {
   state = {
@@ -12,6 +13,10 @@ class MyFilmList extends Component {
     filmData: [],
     isLoading: true,
   };
+
+  changeTitle(title) {
+    this.setState({ searchQuery: title });
+  }
 
   filmDataFetch = async () => {
     const apiKey = "cffdda84";
@@ -42,6 +47,12 @@ class MyFilmList extends Component {
     return (
       <section className="container-fluid pt-4 pb-3 text-start">
         <h4 className="text-white pb-2">{title.toUpperCase()}</h4>
+        <MyDropDown
+          myChangeFun={this.changeTitle}
+          // onSelect={(event) => {
+          //   this.setState({ searchQuery: event.targhet.value });
+          // }}
+        />
 
         {/* -----SPINNER */}
 

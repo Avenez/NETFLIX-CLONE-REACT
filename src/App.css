@@ -37,6 +37,7 @@
   }
 }
 
+/* ----------------NAV BAR------------------------ */
 .navbar-brand > img {
   margin-left: -12px;
 }
@@ -50,9 +51,32 @@ a:hover {
   color: white;
 }
 
+.nav-link {
+  color: white;
+}
+
+.nav-link:hover {
+  color: #d81f26;
+}
+
 header {
   z-index: 200000000;
 }
+
+.search {
+  color: white;
+  width: 40px;
+  height: 40px;
+}
+
+.searcForm {
+  width: 150px;
+}
+
+.searcForm > * {
+}
+
+/* --------------------------------------------- */
 
 .i-secondary {
   color: #6d757d;

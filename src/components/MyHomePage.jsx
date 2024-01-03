@@ -3,20 +3,27 @@ import MyFilmList from "./MyFilmList";
 import MyTvShowHeader from "./MyTvShowsHeader";
 
 class MyHomePage extends Component {
+  changeTitle2 = async (title) => {
+    console.log(title);
+    await this.setState({ filmListTile1: title, filmListTile2: title, filmListTile3: title });
+  };
+
   state = {
-    FilmListTile1: "batman",
-    FilmListTile2: "harry-potter",
-    FilmListTile3: "lord-of-the-rings",
+    filmListTile1: "batman",
+    filmListTile2: "harry-potter",
+    filmListTile3: "lord-of-the-rings",
   };
 
   render() {
     return (
       <>
-        <MyTvShowHeader />
-        <MyFilmList searchQuery={this.state.FilmListTile1} />
-        <MyFilmList searchQuery={this.state.FilmListTile2} />
-        <MyFilmList searchQuery={this.state.FilmListTile3} />
+        <MyTvShowHeader myChangeFun2={this.changeTitle2} />
+        <MyFilmList searchQuery={this.state.filmListTile1} />
+        <MyFilmList searchQuery={this.state.filmListTile2} />
+        <MyFilmList searchQuery={this.state.filmListTile3} />
       </>
     );
   }
 }
+
+export default MyHomePage;

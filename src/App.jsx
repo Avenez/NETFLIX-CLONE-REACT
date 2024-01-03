@@ -4,6 +4,7 @@ import MyNavBar from "./components/MyNavBar";
 import MyFooter from "./components/MyFooter";
 import MyFilmList from "./components/MyFilmList";
 import MyTvShowsHeader from "./components/MyTvShowsHeader";
+import MyHomePage from "./components/MyHomePage";
 
 function App() {
   return (
@@ -13,10 +14,12 @@ function App() {
       </header>
 
       <main className="container-fluid bg-dark">
-        <MyTvShowsHeader />
+        {/* <MyTvShowsHeader />
         <MyFilmList searchQuery="batman" />
         <MyFilmList searchQuery="harry-potter" />
-        <MyFilmList searchQuery="lord-of-the-rings" />
+        <MyFilmList searchQuery="lord-of-the-rings" /> */}
+
+        <MyHomePage />
       </main>
 
       {/* --------FOOTER-------- */}

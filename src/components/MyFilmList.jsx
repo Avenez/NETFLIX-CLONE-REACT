@@ -46,6 +46,15 @@ class MyFilmList extends Component {
     this.filmDataFetch();
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.searchQuery !== prevProps.searchQuery) {
+      this.setState({ startPoint: Math.floor(Math.random() * 6) });
+      this.setState({ searchQuery: this.props.searchQuery, isLoading: true }, () => {
+        this.filmDataFetch();
+      });
+    }
+  }
+
   render() {
     const title = this.state.searchQuery;
     return (

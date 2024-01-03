@@ -12,11 +12,13 @@ class MyFilmList extends Component {
     searchQuery: this.props.searchQuery,
     filmData: [],
     isLoading: true,
+    startPoint: 0,
   };
 
   changeTitle = async (title) => {
     console.log(title);
     await this.setState({ searchQuery: title });
+    await this.setState({ startPoint: Math.floor(Math.random() * 6) });
     await this.filmDataFetch();
   };
 
@@ -49,12 +51,7 @@ class MyFilmList extends Component {
     return (
       <section className="container-fluid pt-4 pb-3 text-start">
         <h4 className="text-white pb-2">{title.toUpperCase()}</h4>
-        <MyDropDown
-          myChangeFun={this.changeTitle}
-          // onSelect={(event) => {
-          //   this.setState({ searchQuery: event.targhet.value });
-          // }}
-        />
+        <MyDropDown myChangeFun={this.changeTitle} />
 
         {/* -----SPINNER */}
 
@@ -67,8 +64,8 @@ class MyFilmList extends Component {
         ) : (
           <>
             <Row className=" d-none d-md-flex gx-1 gy-3 ">
-              {this.state.filmData.slice(0, 6).map((film, index) => (
-                <MySingleFilm key={index} imageUrl={film.Poster} />
+              {this.state.filmData.slice(this.state.startPoint, this.state.startPoint + 6).map((film, index) => (
+                <MySingleFilm key={`film-id-${index}`} imageUrl={film.Poster} />
               ))}
             </Row>
             <Row className="d-sm-flex d-md-none">

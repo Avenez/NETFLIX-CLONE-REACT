@@ -3,6 +3,7 @@ import { Navbar, Nav, Button, Form, Col } from "react-bootstrap";
 import Image from "react-bootstrap/Image";
 import InputGroup from "react-bootstrap/InputGroup";
 import MyProfileSelect from "./MyProfileSalect";
+import { motion, AnimatePresence } from "framer-motion";
 
 class MyNavBar extends Component {
   state = {
@@ -51,14 +52,21 @@ class MyNavBar extends Component {
               </Nav.Item>
             </Nav>
 
-            {this.state.searchIsActive && (
-              <div className="d-flex justify-content-center align-items-center mb-0 ">
-                <InputGroup className="mb-3 searcForm d-flex justify-content-center align-items-center pt-3 mb-0 pb-0">
-                  <Form.Control placeholder="search..." aria-label="Username" size="sm" className="rounded-pill" />
-                </InputGroup>
-              </div>
-            )}
-            <div className="d-flex justify-content-end  align-items-center flex-wrap" role="search">
+            <div className="d-flex justify-content-center flex-wrap">
+              {/* --------------------PROVA ANIMAZIONE-------------- */}
+              <AnimatePresence>
+                {this.state.searchIsActive && (
+                  <motion.div initial={{ width: 0 }} animate={{ width: 150 }} exit={{ width: 0 }}>
+                    <InputGroup className="mb-3 searcForm d-flex justify-content-center align-items-center pt-3 mb-0 pb-0 w-100 ">
+                      <Form.Control placeholder="search..." aria-label="Username" size="sm" className="rounded-pill" />
+                    </InputGroup>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* -------------------------------------------------------- */}
+            <div className="d-flex justify-content-end  align-items-center flex-wrap align-self-end" role="search">
               <a
                 className="search p-0 mx-4 nav-link mt-3"
                 type="button"

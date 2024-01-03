@@ -1,6 +1,5 @@
 import React from "react";
 import { Container, Dropdown, ButtonGroup } from "react-bootstrap";
-import { BiList, BiGrid } from "react-icons/bi";
 
 const TvShowsHeader = () => {
   return (
@@ -16,7 +15,7 @@ const TvShowsHeader = () => {
               Si-Fi
             </Dropdown.Item>
             <Dropdown.Item href="#">Action</Dropdown.Item>
-            <Dropdown.Item href="#">Comedy</Dropdown.Item>
+            <Dropdown.Item href="#">Horror</Dropdown.Item>
             <Dropdown.Item href="#">Drama</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>

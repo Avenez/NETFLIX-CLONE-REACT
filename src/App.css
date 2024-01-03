@@ -73,8 +73,17 @@ header {
   width: 150px;
 }
 
-.searcForm > * {
+.animated-search {
+  opacity: 1;
+  max-height: 100px;
+  overflow: hidden;
+  transition: 1s ease-in-out;
 }
+
+/* .animated-search.active {
+  opacity: 1;
+  max-height: 100px;
+} */
 
 /* --------------------------------------------- */
 

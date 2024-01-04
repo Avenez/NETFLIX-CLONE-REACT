@@ -21,7 +21,7 @@ class MyProfileSelect extends Component {
           <i className="bi bi-person-plus me-2"></i>Aggiungi Profilo
         </Dropdown.Item>
         <Dropdown.Divider />
-        <Dropdown.Item href="#/action-3">
+        <Dropdown.Item href="#/action-3" onClick={this.props.profileToggle4}>
           <i className="bi bi-gear-wide me-2"></i>Impostazioni
         </Dropdown.Item>
       </DropdownButton>

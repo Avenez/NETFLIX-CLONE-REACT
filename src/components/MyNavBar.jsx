@@ -6,6 +6,7 @@ import MyNavMenu from "./MyNavMenu";
 class MyNavBar extends Component {
   state = {
     searchIsActive: false,
+    locationCheck: this.props.isSettingsOnCheck,
   };
 
   render() {
@@ -24,33 +25,32 @@ class MyNavBar extends Component {
           <Navbar.Collapse id="navbarSupportedContent">
             <Nav className="me-auto mb-2 mb-lg-0">
               <Nav.Item>
-                <Nav.Link target="_blank" className="nav-link" href="#">
+                <Nav.Link
+                  className="nav-link"
+                  onClick={this.props.isSettingsOnCheck ? this.props.profileToggle2 : null}
+                >
                   Home
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link target="_blank" className="nav-link" href="#">
-                  TV Show
-                </Nav.Link>
+                <Nav.Link className="nav-link">TV Show</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link target="_blank" className="nav-link" href="#">
-                  Movies
-                </Nav.Link>
+                <Nav.Link className="nav-link">Movies</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link target="_blank" className="nav-link" href="#">
-                  Recently Added
-                </Nav.Link>
+                <Nav.Link className="nav-link">Recently Added</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link target="_blank" className="nav-link" href="#">
-                  My List
-                </Nav.Link>
+                <Nav.Link className="nav-link">My List</Nav.Link>
               </Nav.Item>
             </Nav>
 
-            <MyNavMenu searchIsActive={this.state.searchIsActive} profileToggle3={this.props.profileToggle2} />
+            <MyNavMenu
+              searchIsActive={this.state.searchIsActive}
+              profileToggle3={this.props.profileToggle2}
+              profilePicture3={this.props.profilePicture2}
+            />
           </Navbar.Collapse>
         </div>
       </Navbar>

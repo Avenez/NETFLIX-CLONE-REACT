@@ -10,7 +10,14 @@ class MyProfileSelect extends Component {
       <DropdownButton
         variant="dark"
         id="dropdown-basic-button"
-        title={<Image src="assets/avatar.png" width="30" alt="avatar" rounded />}
+        title={
+          <Image
+            src={this.props.profilePicturePage ? this.props.profilePicturePage : "assets/avatar.png"}
+            width="30"
+            alt="avatar"
+            rounded
+          />
+        }
         drop="start"
         data-bs-theme="dark"
       >

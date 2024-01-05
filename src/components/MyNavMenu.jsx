@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Component } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
-import MyProfileSelect from "./MyProfileSalect";
+import MyProfileSelect from "./MyProfileSelect";
 
 class MyNavMenu extends Component {
   state = {
@@ -40,7 +40,7 @@ class MyNavMenu extends Component {
             <i className="bi bi-bell-fill"></i>
           </Button>
           <div className="btn ms-0">
-            <MyProfileSelect profileToggle4={this.props.profileToggle3} />
+            <MyProfileSelect profilePicture4={this.props.profilePicture3} profileToggle4={this.props.profileToggle3} />
           </div>
         </div>
       </>

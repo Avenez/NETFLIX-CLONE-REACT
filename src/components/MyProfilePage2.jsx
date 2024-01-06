@@ -5,13 +5,10 @@ class MyProfilePage2 extends Component {
   state = {
     nameSelected: false,
     ProfileName: "",
-
-    preferences: {
-      favLanguage: "",
-      matSettings: "",
-      autoEpisode: false,
-      autoPreview: false,
-    },
+    favLanguage: "",
+    matSettings: "",
+    autoEpisode: false,
+    autoPreview: false,
   };
 
   handleKeyDown = (event) => {
@@ -56,7 +53,10 @@ class MyProfilePage2 extends Component {
                 </div>
               </Col>
 
-              {/* STRIVE STUDENT */}
+              {/* STRIVE STUDENT --- La parte relativa al nome, all'immagine profilo e al linguaggio possono essere cambiate. Nome e linguaggio aggiornano lo stato in questo componente. 
+              L'input type file aggiorna lo stato nel componente app per poterlo condividere con la navbar. 
+              Ho provato ad usare Redux per avere uno stato condiviso ma non sosno riuscito ad usarlo in autonomia */}
+
               <Col xs={8} className="mt-4 mt-md-0">
                 <Row className="border-bottom border-secondary border-1 pb-4">
                   {this.state.nameSelected && (
@@ -72,7 +72,7 @@ class MyProfilePage2 extends Component {
                       className="bg-secondary text-white p-2 namePargraf"
                       onClick={() => this.setState({ nameSelected: true })}
                     >
-                      {this.state.ProfileName ? this.state.ProfileName : "Default Name"}
+                      {this.state.ProfileName ? this.state.ProfileName : "Default Name - click to change"}
                     </p>
                   )}
                   <p className="text-white p-0 mt-3 fs-4 text-start">Language:</p>
@@ -81,55 +81,70 @@ class MyProfilePage2 extends Component {
                     aria-label="Languages"
                     onChange={(event) => this.setState({ favLanguage: event.target.value })}
                   >
-                    <option selected>{this.state.favLanguage}</option>
+                    <option selected></option>
                     <option value="Inglese">Inglese</option>
                     <option value="Francese">Francese</option>
                     <option value="Tedesco">Tedesco</option>
                     <option value="Italiano">Italiano</option>
                   </Form.Select>
 
-                  <Form.Select className="bg-dark text-white d-flex d-sm-none" aria-label="Languages">
+                  <Form.Select
+                    className="bg-dark text-white d-flex d-sm-none"
+                    aria-label="Languages"
+                    onChange={(event) => this.setState({ favLanguage: event.target.value })}
+                  >
                     <option selected></option>
-                    <option value="1">Inglese</option>
-                    <option value="2">Francese</option>
-                    <option value="3">Tedesco</option>
-                    <option value="4">Italiano</option>
+                    <option value="Inglese">Inglese</option>
+                    <option value="Francese">Francese</option>
+                    <option value="Tedesco">Tedesco</option>
+                    <option value="Italiano">Italiano</option>
                   </Form.Select>
                 </Row>
 
-                {/* MATURITY SET */}
+                {/* MATURITY SET --- anche qui i select cambiano lo stato */}
                 <Row className="border-bottom border-secondary border-1 pb-4 mt-4">
                   <p className="text-white p-0 mt-3 fs-4 text-start">Maturity Settings:</p>
-                  <Form.Select className="bg-secondary text-white w-50 d-none d-sm-flex border-0" aria-label="Maturity">
+                  <Form.Select
+                    className="bg-secondary text-white w-50 d-none d-sm-flex border-0"
+                    aria-label="Maturity"
+                    onChange={(event) => this.setState({ matSettings: event.target.value })}
+                  >
                     <option selected></option>
-                    <option value="1">ALL MATURITY RATINGS</option>
-                    <option value="2">RESTRICTED</option>
-                    <option value="3">BABY</option>
+                    <option value="ALL MATURITY RATINGS">ALL MATURITY RATINGS</option>
+                    <option value="RESTRICTED">RESTRICTED</option>
+                    <option value="BABY">BABY</option>
                   </Form.Select>
 
-                  <Form.Select className="bg-secondary text-white d-flex d-sm-none border-0" aria-label="Maturity">
+                  <Form.Select
+                    className="bg-secondary text-white d-flex d-sm-none border-0"
+                    aria-label="Maturity"
+                    onChange={(event) => this.setState({ matSettings: event.target.value })}
+                  >
                     <option selected></option>
-                    <option value="1">ALL MATURITY RATINGS</option>
-                    <option value="2">RESTRICTED</option>
-                    <option value="3">BABY</option>
+                    <option value="ALL MATURITY RATINGS">ALL MATURITY RATINGS</option>
+                    <option value="RESTRICTED">RESTRICTED</option>
+                    <option value="BABY">BABY</option>
                   </Form.Select>
 
                   <p className="text-white p-0 mt-3 ms-0 text-start">
                     Show titles of all maturity ratings for this profile
                   </p>
-                  <Button variant="dark" className="border-1 border-secondary w-25">
+                  <Button variant="dark" className="border-1 border-secondary editBtn">
                     EDIT
                   </Button>
                 </Row>
 
-                {/* AUTOPLAY CONTROLS */}
+                {/* AUTOPLAY CONTROLS - la pressione delle checkbox aggiorna lo stato */}
                 <Row className="pb-4 mt-4">
                   <p className="text-white p-0 mt-3 fs-4 text-start">Autoplay Controls</p>
 
                   <div className="d-flex flex-column justify-content-center p-0">
                     <div className="d-flex align-items-center mb-0 p-0">
                       <label className="checkbox mb-0">
-                        <input type="checkbox" />
+                        <input
+                          type="checkbox"
+                          onChange={() => this.setState({ autoEpisode: !this.state.autoEpisode })}
+                        />
                         <span className="checkmark"></span>
                       </label>
                       <p className="text-white ms-2 mb-0 pb-2 ">Autoplay next episode in a series on all devices.</p>
@@ -137,7 +152,10 @@ class MyProfilePage2 extends Component {
 
                     <div className="d-flex align-items-center mt-0 p-0">
                       <label className="checkbox">
-                        <input type="checkbox" />
+                        <input
+                          type="checkbox"
+                          onClick={() => this.setState({ autoPreview: !this.state.autoPreview })}
+                        />
                         <span className="checkmark"></span>
                       </label>
                       <p className="text-white ms-2 pb-2">Autoplay previews while browsing on all devices.</p>

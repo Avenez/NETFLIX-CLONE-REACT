@@ -13,6 +13,8 @@ class MyNavMenu extends Component {
       <>
         <div className="d-flex justify-content-center flex-wrap">
           {/* --------------------PROVA ANIMAZIONE-------------- */}
+          {/* ----Ho provato ad utilizzare una libreria esterna per le animazioni in react. La barra di ricerca è animata ma non funzionante. La selezione del genere dei film
+          viene fatta da altri componenti */}
           <AnimatePresence>
             {this.state.searchIsActive && (
               <motion.div initial={{ width: 0 }} animate={{ width: 150 }} exit={{ width: 0 }}>

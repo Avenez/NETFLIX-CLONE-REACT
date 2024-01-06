@@ -32,6 +32,8 @@ class App extends Component {
 
   render() {
     return (
+      // nella navbar, il menù relativo al profilo, sull'opzione impostazioni, cambia lo stato dell'app permettendo di renderizzare la pagina del profilo.
+      // Questa è commentata al suo interno con le sue funzionalità
       <div className="App">
         <header className="container-fluid bg-dark position-sticky top-0">
           <MyNavBar
@@ -42,10 +44,6 @@ class App extends Component {
         </header>
 
         <main className="container-fluid bg-dark">
-          {/* <MyTvShowsHeader />
-        <MyFilmList searchQuery="batman" />
-        <MyFilmList searchQuery="harry-potter" />
-        <MyFilmList searchQuery="lord-of-the-rings" /> */}
           {!this.state.isSettingsOn && <MyHomePage />}
           {this.state.isSettingsOn && (
             <MyProfilePage2

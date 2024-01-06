@@ -38,6 +38,18 @@
 }
 
 /* ----------------NAV BAR------------------------ */
+
+.navProfileImage {
+  width: 40px;
+  height: 40px;
+}
+
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
 .navbar-brand > img {
   margin-left: -12px;
 }
@@ -80,11 +92,6 @@ header {
   transition: 1s ease-in-out;
 }
 
-/* .animated-search.active {
-  opacity: 1;
-  max-height: 100px;
-} */
-
 /* --------------------------------------------- */
 
 .i-secondary {
@@ -102,6 +109,8 @@ header {
 
 .img-div {
   width: 100px;
+  height: 100px;
+  border-radius: 10px;
 }
 
 .li {
@@ -188,4 +197,10 @@ header {
 
 .containerPosition {
   position: relative;
+}
+
+/* --------------------MAIN + PROFILE---------------- */
+
+.namePargraf {
+  cursor: pointer;
 }

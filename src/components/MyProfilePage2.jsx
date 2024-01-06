@@ -2,6 +2,26 @@ import React, { Component } from "react";
 import { Row, Col, Button, Image, Form } from "react-bootstrap";
 
 class MyProfilePage2 extends Component {
+  state = {
+    nameSelected: false,
+    ProfileName: "",
+
+    preferences: {
+      favLanguage: "",
+      matSettings: "",
+      autoEpisode: false,
+      autoPreview: false,
+    },
+  };
+
+  handleKeyDown = (event) => {
+    if (event.keyCode === 13) {
+      const inputValue = event.target.value;
+      this.setState({ ProfileName: inputValue });
+      this.setState({ nameSelected: !this.state.nameSelected });
+    }
+  };
+
   render() {
     return (
       <>
@@ -17,6 +37,7 @@ class MyProfilePage2 extends Component {
               <Col xs={3} className=" ps-0 pe-0">
                 <div className="position-relative img-div">
                   <Image
+                    className="object-fit-cover border-0 rounded h-100 w-100"
                     width="100"
                     src={this.props.profilePicturePage ? this.props.profilePicturePage : "assets/avatar.png"}
                     alt="avatar"
@@ -38,20 +59,41 @@ class MyProfilePage2 extends Component {
               {/* STRIVE STUDENT */}
               <Col xs={8} className="mt-4 mt-md-0">
                 <Row className="border-bottom border-secondary border-1 pb-4">
-                  <p className="bg-secondary text-white p-2"> Strive Student</p>
+                  {this.state.nameSelected && (
+                    <Form.Control
+                      type="text"
+                      placeholder={this.state.ProfileName ? this.state.ProfileName : "Default Name"}
+                      onKeyDown={this.handleKeyDown}
+                    />
+                  )}
+
+                  {!this.state.nameSelected && (
+                    <p
+                      className="bg-secondary text-white p-2 namePargraf"
+                      onClick={() => this.setState({ nameSelected: true })}
+                    >
+                      {this.state.ProfileName ? this.state.ProfileName : "Default Name"}
+                    </p>
+                  )}
                   <p className="text-white p-0 mt-3 fs-4 text-start">Language:</p>
-                  <Form.Select className="bg-dark text-white w-35 d-none d-sm-flex" aria-label="Languages">
-                    <option selected>Italiano</option>
-                    <option value="1">Inglese</option>
-                    <option value="2">Francese</option>
-                    <option value="3">Tedesco</option>
+                  <Form.Select
+                    className="bg-dark text-white w-35 d-none d-sm-flex"
+                    aria-label="Languages"
+                    onChange={(event) => this.setState({ favLanguage: event.target.value })}
+                  >
+                    <option selected>{this.state.favLanguage}</option>
+                    <option value="Inglese">Inglese</option>
+                    <option value="Francese">Francese</option>
+                    <option value="Tedesco">Tedesco</option>
+                    <option value="Italiano">Italiano</option>
                   </Form.Select>
 
                   <Form.Select className="bg-dark text-white d-flex d-sm-none" aria-label="Languages">
-                    <option selected>Italiano</option>
+                    <option selected></option>
                     <option value="1">Inglese</option>
                     <option value="2">Francese</option>
                     <option value="3">Tedesco</option>
+                    <option value="4">Italiano</option>
                   </Form.Select>
                 </Row>
 
@@ -98,7 +140,7 @@ class MyProfilePage2 extends Component {
                         <input type="checkbox" />
                         <span className="checkmark"></span>
                       </label>
-                      <p className="text-white ms-2 pb-2">Autoplay next episode in a series on all devices.</p>
+                      <p className="text-white ms-2 pb-2">Autoplay previews while browsing on all devices.</p>
                     </div>
                   </div>
                 </Row>

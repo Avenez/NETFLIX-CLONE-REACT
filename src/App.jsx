@@ -21,12 +21,13 @@ class App extends Component {
 
   changeProfilePicture = (file) => {
     const fReader = new FileReader();
+    fReader.readAsDataURL(file);
+
     fReader.onload = () => {
       const filePath = fReader.result;
       this.setState({ profilePicture: filePath });
       console.log(file);
     };
-    fReader.readAsDataURL(file);
   };
 
   render() {

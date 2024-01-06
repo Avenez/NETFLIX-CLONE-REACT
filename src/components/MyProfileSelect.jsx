@@ -11,12 +11,14 @@ class MyProfileSelect extends Component {
         variant="dark"
         id="dropdown-basic-button"
         title={
-          <Image
-            src={this.props.profilePicturePage ? this.props.profilePicturePage : "assets/avatar.png"}
-            width="30"
-            alt="avatar"
-            rounded
-          />
+          <div className="navProfileImage">
+            <Image
+              className="object-fit-cover border-0 rounded h-100 w-100"
+              src={this.props.profilePicture4 ? this.props.profilePicture4 : "assets/avatar.png"}
+              alt="avatar"
+              rounded
+            />
+          </div>
         }
         drop="start"
         data-bs-theme="dark"
